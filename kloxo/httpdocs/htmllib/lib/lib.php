@@ -2909,6 +2909,24 @@ function callInBackground($func, $arglist)
 	lxshell_background("__path_php_path", "../bin/common/background.php", $name);
 }
 
+function callWithSudo($res, $username=null)
+{
+        if(!isset($username)){
+                $username = $res->arglist[0];
+        }
+ 
+        if(isset($res->func))
+                log_log("sudo_action", "Running: ".serialize($res->func)." as $username ");
+        else if(isset($res->robject))
+                log_log("sudo_action", "Running: ".serialize($res->robject)." as $username ");
+
+        $var = lxshell_output("sudo",  "-u", $username,  "__path_php_path", "../bin/common/sudo_action.php", escapeshellarg(base64_encode(serialize($res))));
+//      $var = lxshell_output(  "__path_php_path", "../bin/common/sudo_action.php", escapeshellarg(base64_encode(serialize($res))));
+        $rmt = unserialize(base64_decode($var));
+        return $rmt;
+}
+
+
 function callObjectInBackground($object, $func)
 {
 	$res = new Remote();
