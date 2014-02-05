@@ -895,6 +895,9 @@ function do_local_action($rmt)
 			class_exists($class);
 		}
 		// ---
+		// Since php 5.3 this wont take NULL
+		if(!$rmt->arglist)$rmt->arglist=array();
+		
 		return call_user_func_array($rmt->func, $rmt->arglist);
 
 	}
