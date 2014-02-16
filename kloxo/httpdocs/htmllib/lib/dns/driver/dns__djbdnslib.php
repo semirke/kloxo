@@ -328,7 +328,7 @@ function dbactionDelete()
 function ip6Array($ip){ 
 	//Make sure we have 8 parts 
 	while(count(explode(":",$ip)) < 8){ 
-		$ip = str_replace("::",":::",$ip); 
+                $ip = preg_replace("/::/", ":::", $ip, 1);
 	} 
 	
 	$ipa = explode(":",$ip); 
