@@ -813,10 +813,12 @@ function getId()
 
 function getContent()
 {
+	global $login;
+	
 	$stat['mode'] = $this->mode;
 	$stat['ttype'] = $this->ttype;
 
-	$stat = rl_exec_get(null, $this->__readserver,  array("coreFfile", "getContent"), array($this->__username_o, $this->root, $this->getFullPath(), $stat, $this->numlines));
+	$stat = rl_exec_get(null, $this->__readserver,  array("coreFfile", "getContent"), array($this->__username_o, $this->root, $this->getFullPath(), $stat, $this->numlines, $login->isAdmin()));
 
 	$this->modify($stat);
 	$this->dbaction = 'clean';
