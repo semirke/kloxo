@@ -203,3 +203,8 @@ $__emessage['forwardaddress invaild'] = 'The forward-to address is invalid.';
 $__emessage['folder_name_may_not_contain_doubledotsslash'] = "Folder name must not contain ../ (double dots).";
 $__emessage['command_not_allowd'] = "Command not allowed! (You only have privilege to run 'php' or 'wget' in cron.)";
 
+// 6.1.19
+$__information['click_to_update_all_under']="Click Here to Update all the objects that appear in the top selectbox with the above values";
+// File manager mod
+$__emessage['file_bad_owner_logged']="Tried to access file not owned by user. Incident has been logged.";
+
